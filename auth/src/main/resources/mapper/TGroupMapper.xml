@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hong.mapper.TGroupMapper">
+  <resultMap id="BaseResultMap" type="com.hong.entity.TGroup">
+    <id column="tg_id" jdbcType="INTEGER" property="tgId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="parent_tg_id" jdbcType="VARCHAR" property="parentTgId" />
+    <result column="gen_time" jdbcType="TIMESTAMP" property="genTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tg_id, group_name, parent_tg_id, gen_time, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_group
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_group
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hong.entity.TGroup">
+    insert into t_group (tg_id, group_name, parent_tg_id, 
+      gen_time, description)
+    values (#{tgId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{parentTgId,jdbcType=VARCHAR}, 
+      #{genTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hong.entity.TGroup">
+    insert into t_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tgId != null">
+        tg_id,
+      </if>
+      <if test="groupName != null">
+        group_name,
+      </if>
+      <if test="parentTgId != null">
+        parent_tg_id,
+      </if>
+      <if test="genTime != null">
+        gen_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tgId != null">
+        #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTgId != null">
+        #{parentTgId,jdbcType=VARCHAR},
+      </if>
+      <if test="genTime != null">
+        #{genTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TGroup">
+    update t_group
+    <set>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentTgId != null">
+        parent_tg_id = #{parentTgId,jdbcType=VARCHAR},
+      </if>
+      <if test="genTime != null">
+        gen_time = #{genTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TGroup">
+    update t_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      parent_tg_id = #{parentTgId,jdbcType=VARCHAR},
+      gen_time = #{genTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </update>
+</mapper>

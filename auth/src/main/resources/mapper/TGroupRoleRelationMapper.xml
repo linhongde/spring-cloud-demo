@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hong.mapper.TGroupRoleRelationMapper">
+  <resultMap id="BaseResultMap" type="com.hong.entity.TGroupRoleRelation">
+    <id column="tgr_id" jdbcType="INTEGER" property="tgrId" />
+    <result column="tg_id" jdbcType="INTEGER" property="tgId" />
+    <result column="tr_id" jdbcType="VARCHAR" property="trId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tgr_id, tg_id, tr_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_group_role_relation
+    where tgr_id = #{tgrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_group_role_relation
+    where tgr_id = #{tgrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hong.entity.TGroupRoleRelation">
+    insert into t_group_role_relation (tgr_id, tg_id, tr_id
+      )
+    values (#{tgrId,jdbcType=INTEGER}, #{tgId,jdbcType=INTEGER}, #{trId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hong.entity.TGroupRoleRelation">
+    insert into t_group_role_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tgrId != null">
+        tgr_id,
+      </if>
+      <if test="tgId != null">
+        tg_id,
+      </if>
+      <if test="trId != null">
+        tr_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tgrId != null">
+        #{tgrId,jdbcType=INTEGER},
+      </if>
+      <if test="tgId != null">
+        #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="trId != null">
+        #{trId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TGroupRoleRelation">
+    update t_group_role_relation
+    <set>
+      <if test="tgId != null">
+        tg_id = #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="trId != null">
+        tr_id = #{trId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tgr_id = #{tgrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TGroupRoleRelation">
+    update t_group_role_relation
+    set tg_id = #{tgId,jdbcType=INTEGER},
+      tr_id = #{trId,jdbcType=VARCHAR}
+    where tgr_id = #{tgrId,jdbcType=INTEGER}
+  </update>
+</mapper>

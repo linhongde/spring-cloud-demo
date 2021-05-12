@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hong.mapper.TUserRightRelationMapper">
+  <resultMap id="BaseResultMap" type="com.hong.entity.TUserRightRelation">
+    <id column="tur_id" jdbcType="INTEGER" property="turId" />
+    <result column="tu_id" jdbcType="INTEGER" property="tuId" />
+    <result column="tr_id" jdbcType="INTEGER" property="trId" />
+    <result column="right_type" jdbcType="INTEGER" property="rightType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tur_id, tu_id, tr_id, right_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_right_relation
+    where tur_id = #{turId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user_right_relation
+    where tur_id = #{turId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hong.entity.TUserRightRelation">
+    insert into t_user_right_relation (tur_id, tu_id, tr_id, 
+      right_type)
+    values (#{turId,jdbcType=INTEGER}, #{tuId,jdbcType=INTEGER}, #{trId,jdbcType=INTEGER}, 
+      #{rightType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hong.entity.TUserRightRelation">
+    insert into t_user_right_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="turId != null">
+        tur_id,
+      </if>
+      <if test="tuId != null">
+        tu_id,
+      </if>
+      <if test="trId != null">
+        tr_id,
+      </if>
+      <if test="rightType != null">
+        right_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="turId != null">
+        #{turId,jdbcType=INTEGER},
+      </if>
+      <if test="tuId != null">
+        #{tuId,jdbcType=INTEGER},
+      </if>
+      <if test="trId != null">
+        #{trId,jdbcType=INTEGER},
+      </if>
+      <if test="rightType != null">
+        #{rightType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TUserRightRelation">
+    update t_user_right_relation
+    <set>
+      <if test="tuId != null">
+        tu_id = #{tuId,jdbcType=INTEGER},
+      </if>
+      <if test="trId != null">
+        tr_id = #{trId,jdbcType=INTEGER},
+      </if>
+      <if test="rightType != null">
+        right_type = #{rightType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tur_id = #{turId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TUserRightRelation">
+    update t_user_right_relation
+    set tu_id = #{tuId,jdbcType=INTEGER},
+      tr_id = #{trId,jdbcType=INTEGER},
+      right_type = #{rightType,jdbcType=INTEGER}
+    where tur_id = #{turId,jdbcType=INTEGER}
+  </update>
+</mapper>
