@@ -4,8 +4,12 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/consumer_feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/consumer_ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hystrix-dashboard" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud_config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud_producer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud_server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test" charset="UTF-8" />

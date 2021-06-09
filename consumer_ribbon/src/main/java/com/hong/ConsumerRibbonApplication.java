@@ -17,7 +17,7 @@ public class ConsumerRibbonApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConsumerRibbonApplication.class,args);
-        log.info("消费启动成功。。。。");
+        log.info("ribbon消费启动成功。。。。");
     }
 
     @Bean
