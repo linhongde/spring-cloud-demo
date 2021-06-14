@@ -17,14 +17,18 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-cloud_server</module>
-        <module>spring-cloud_producer</module>
-        <module>spring-cloud_consumer</module>
+        <module>spring-cloud-producer</module>
         <module>auth</module>
         <module>utils</module>
         <module>api</module>
         <module>consumer_feign</module>
         <module>consumer_ribbon</module>
         <module>test</module>
+        <module>hystrix-dashboard</module>
+        <module>spring-cloud_config</module>
+        <module>config-server</module>
+        <module>config-client</module>
+        <module>spring-cloud-zuul</module>
     </modules>
 
 

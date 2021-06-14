@@ -1,0 +1,14 @@
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TUserRoleRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TUserRightRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TAuth.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TRoleRightRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TOrganization.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TRole.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TUser.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TGroupRoleRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TGroup.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TUserGroupRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\common\Result.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TGroupRightRelation.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\entity\TLog.java
+D:\hong\spring-cloud_demo\api\src\main\java\com\hong\service\TUserService.java

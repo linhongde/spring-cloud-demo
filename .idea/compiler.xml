@@ -9,17 +9,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
         <module name="auth" />
+        <module name="config-client" />
+        <module name="config-server" />
         <module name="consumer_feign" />
         <module name="consumer_ribbon" />
-        <module name="spring-cloud_producer" />
+        <module name="hystrix-dashboard" />
+        <module name="spring-cloud-producer" />
+        <module name="spring-cloud-zuul" />
+        <module name="spring-cloud_config" />
         <module name="spring-cloud_server" />
         <module name="test" />
         <module name="utils" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="spring-cloud_consumer" target="1.8" />
-      <module name="spring-cloud_consumer_feign" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

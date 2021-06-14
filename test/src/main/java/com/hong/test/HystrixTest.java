@@ -23,10 +23,16 @@ public class HystrixTest {
     public ContiPerfRule i = new ContiPerfRule();
 
     @Test
-    @PerfTest(threads = 10,invocations = 10)
+    @PerfTest(threads = 11,invocations = 11)
     public void test(){
-        log.info(Thread.currentThread().getId()+userService.getUser(9).toString());
+        log.info(Thread.currentThread().getName()+"===="+userService.getUser(9).toString());
+    }
 
+
+    @Test
+    @PerfTest(threads = 11,invocations = 11)
+    public void getUserById(){
+        log.info(Thread.currentThread().getName()+"===="+userService.getUserById(9));
     }
 
 }
