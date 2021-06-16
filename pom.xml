@@ -28,6 +28,9 @@
         <module>spring-cloud_config</module>
         <module>config-server</module>
         <module>config-client</module>
+        <module>server-zuul</module>
+        <module>spring-cloud-admin</module>
+        <module>admin-server</module>
     </modules>
 
 

@@ -21,7 +21,7 @@ public class ConfigApplication {
     }
 
 
-    @Value("${spring.cloud.config.name}")
+    /*@Value("${spring.cloud.config.name}")*/
     private String port;
 
     @GetMapping("/getPort")
