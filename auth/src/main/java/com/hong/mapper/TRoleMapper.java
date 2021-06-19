@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TRole;
+import com.hong.entity.auth.TRole;
 
 public interface TRoleMapper {
     int deleteByPrimaryKey(Integer trId);

@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="admin-server" />
         <module name="api" />
         <module name="auth" />
         <module name="config-client" />
@@ -14,6 +15,10 @@
         <module name="consumer_feign" />
         <module name="consumer_ribbon" />
         <module name="hystrix-dashboard" />
+        <module name="mybatis-generator" />
+        <module name="security-db" />
+        <module name="security-server" />
+        <module name="server-zuul" />
         <module name="spring-cloud-producer" />
         <module name="spring-cloud-zuul" />
         <module name="spring-cloud_config" />

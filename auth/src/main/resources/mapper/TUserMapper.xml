@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TUserMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TUser">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TUser">
     <id column="tu_id" jdbcType="INTEGER" property="tuId" />
     <result column="to_id" jdbcType="INTEGER" property="toId" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
@@ -28,7 +28,7 @@
     delete from t_user
     where tu_id = #{tuId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TUser">
+  <insert id="insert" parameterType="com.hong.entity.auth.TUser">
     insert into t_user (tu_id, to_id, login_name, 
       password, username, mobile, 
       email, create_time, login_time, 
@@ -38,7 +38,7 @@
       #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}, 
       #{lastLoginTime,jdbcType=TIMESTAMP}, #{count,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TUser">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TUser">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tuId != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TUser">
     update t_user
     <set>
       <if test="toId != null">
@@ -147,7 +147,7 @@
     </set>
     where tu_id = #{tuId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TUser">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TUser">
     update t_user
     set to_id = #{toId,jdbcType=INTEGER},
       login_name = #{loginName,jdbcType=VARCHAR},

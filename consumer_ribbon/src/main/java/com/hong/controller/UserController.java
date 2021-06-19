@@ -1,6 +1,6 @@
 package com.hong.controller;
 
-import com.hong.common.Result;
+import com.hong.common.response.Result;
 import com.hong.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

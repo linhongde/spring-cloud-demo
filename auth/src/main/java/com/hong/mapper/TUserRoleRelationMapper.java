@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TUserRoleRelation;
+import com.hong.entity.auth.TUserRoleRelation;
 
 public interface TUserRoleRelationMapper {
     int deleteByPrimaryKey(Integer turId);

@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TUserGroupRelation;
+import com.hong.entity.auth.TUserGroupRelation;
 
 public interface TUserGroupRelationMapper {
     int deleteByPrimaryKey(Integer tugId);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TLogMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TLog">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TLog">
     <id column="log_id" jdbcType="INTEGER" property="logId" />
     <result column="op_type" jdbcType="VARCHAR" property="opType" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -21,13 +21,13 @@
     delete from t_log
     where log_id = #{logId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TLog">
+  <insert id="insert" parameterType="com.hong.entity.auth.TLog">
     insert into t_log (log_id, op_type, content, 
       tu_id, gen_time)
     values (#{logId,jdbcType=INTEGER}, #{opType,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{tuId,jdbcType=INTEGER}, #{genTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TLog">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TLog">
     insert into t_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="logId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TLog">
     update t_log
     <set>
       <if test="opType != null">
@@ -82,7 +82,7 @@
     </set>
     where log_id = #{logId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TLog">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TLog">
     update t_log
     set op_type = #{opType,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},

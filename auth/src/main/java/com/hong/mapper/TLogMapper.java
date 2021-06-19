@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TLog;
+import com.hong.entity.auth.TLog;
 
 public interface TLogMapper {
     int deleteByPrimaryKey(Integer logId);

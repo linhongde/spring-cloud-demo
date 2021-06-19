@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TGroupRoleRelation;
+import com.hong.entity.auth.TGroupRoleRelation;
 
 public interface TGroupRoleRelationMapper {
     int deleteByPrimaryKey(Integer tgrId);

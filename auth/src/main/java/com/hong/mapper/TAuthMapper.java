@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TAuth;
+import com.hong.entity.auth.TAuth;
 
 public interface TAuthMapper {
     int deleteByPrimaryKey(Integer trId);

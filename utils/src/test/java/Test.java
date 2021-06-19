@@ -1,4 +1,3 @@
-import java.util.Comparator;
 import java.util.function.Consumer;
 
 public class Test {
@@ -26,15 +25,7 @@ public class Test {
     }
 
 
-    @org.junit.Test
-    public void test3(){
-        Comparator<T> tComparator = (x, y) -> {
-            int i = x + y;
-            return i;
-        };
 
-
-    }
 
 
 }

@@ -1,7 +1,7 @@
 package com.hong.service;
 
-import com.hong.common.Result;
-import com.hong.entity.TUser;
+import com.hong.common.response.Result;
+import com.hong.entity.auth.TUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

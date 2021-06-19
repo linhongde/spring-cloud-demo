@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TGroup;
+import com.hong.entity.auth.TGroup;
 
 public interface TGroupMapper {
     int deleteByPrimaryKey(Integer tgId);

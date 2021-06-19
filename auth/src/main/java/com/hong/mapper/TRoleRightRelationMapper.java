@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TRoleRightRelation;
+import com.hong.entity.auth.TRoleRightRelation;
 
 public interface TRoleRightRelationMapper {
     int deleteByPrimaryKey(Integer trrId);

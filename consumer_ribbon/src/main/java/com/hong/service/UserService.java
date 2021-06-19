@@ -1,6 +1,6 @@
 package com.hong.service;
 
-import com.hong.common.Result;
+import com.hong.common.response.Result;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
