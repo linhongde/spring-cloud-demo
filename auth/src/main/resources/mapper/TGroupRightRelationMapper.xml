@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TGroupRightRelationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TGroupRightRelation">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TGroupRightRelation">
     <id column="tgr_id" jdbcType="INTEGER" property="tgrId" />
     <result column="tg_id" jdbcType="INTEGER" property="tgId" />
     <result column="tr_id" jdbcType="INTEGER" property="trId" />
@@ -20,13 +20,13 @@
     delete from t_group_right_relation
     where tgr_id = #{tgrId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TGroupRightRelation">
+  <insert id="insert" parameterType="com.hong.entity.auth.TGroupRightRelation">
     insert into t_group_right_relation (tgr_id, tg_id, tr_id, 
       right_type)
     values (#{tgrId,jdbcType=INTEGER}, #{tgId,jdbcType=INTEGER}, #{trId,jdbcType=INTEGER}, 
       #{rightType,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TGroupRightRelation">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TGroupRightRelation">
     insert into t_group_right_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tgrId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TGroupRightRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TGroupRightRelation">
     update t_group_right_relation
     <set>
       <if test="tgId != null">
@@ -72,7 +72,7 @@
     </set>
     where tgr_id = #{tgrId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TGroupRightRelation">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TGroupRightRelation">
     update t_group_right_relation
     set tg_id = #{tgId,jdbcType=INTEGER},
       tr_id = #{trId,jdbcType=INTEGER},

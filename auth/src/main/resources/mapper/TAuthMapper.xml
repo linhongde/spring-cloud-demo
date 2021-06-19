@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TAuthMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TAuth">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TAuth">
     <id column="tr_id" jdbcType="INTEGER" property="trId" />
     <result column="parent_tr_id" jdbcType="INTEGER" property="parentTrId" />
     <result column="right_name" jdbcType="VARCHAR" property="rightName" />
@@ -20,13 +20,13 @@
     delete from t_auth
     where tr_id = #{trId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TAuth">
+  <insert id="insert" parameterType="com.hong.entity.auth.TAuth">
     insert into t_auth (tr_id, parent_tr_id, right_name, 
       description)
     values (#{trId,jdbcType=INTEGER}, #{parentTrId,jdbcType=INTEGER}, #{rightName,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TAuth">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TAuth">
     insert into t_auth
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="trId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TAuth">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TAuth">
     update t_auth
     <set>
       <if test="parentTrId != null">
@@ -72,7 +72,7 @@
     </set>
     where tr_id = #{trId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TAuth">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TAuth">
     update t_auth
     set parent_tr_id = #{parentTrId,jdbcType=INTEGER},
       right_name = #{rightName,jdbcType=VARCHAR},

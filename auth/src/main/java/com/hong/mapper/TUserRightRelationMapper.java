@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TUserRightRelation;
+import com.hong.entity.auth.TUserRightRelation;
 
 public interface TUserRightRelationMapper {
     int deleteByPrimaryKey(Integer turId);

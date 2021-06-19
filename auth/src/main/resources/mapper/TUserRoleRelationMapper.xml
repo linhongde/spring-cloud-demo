@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TUserRoleRelationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TUserRoleRelation">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TUserRoleRelation">
     <id column="tur_id" jdbcType="INTEGER" property="turId" />
     <result column="tu_id" jdbcType="INTEGER" property="tuId" />
     <result column="tr_id" jdbcType="INTEGER" property="trId" />
@@ -19,13 +19,13 @@
     delete from t_user_role_relation
     where tur_id = #{turId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TUserRoleRelation">
+  <insert id="insert" parameterType="com.hong.entity.auth.TUserRoleRelation">
     insert into t_user_role_relation (tur_id, tu_id, tr_id
       )
     values (#{turId,jdbcType=INTEGER}, #{tuId,jdbcType=INTEGER}, #{trId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TUserRoleRelation">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TUserRoleRelation">
     insert into t_user_role_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="turId != null">
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TUserRoleRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TUserRoleRelation">
     update t_user_role_relation
     <set>
       <if test="tuId != null">
@@ -62,7 +62,7 @@
     </set>
     where tur_id = #{turId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TUserRoleRelation">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TUserRoleRelation">
     update t_user_role_relation
     set tu_id = #{tuId,jdbcType=INTEGER},
       tr_id = #{trId,jdbcType=INTEGER}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TGroupMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TGroup">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TGroup">
     <id column="tg_id" jdbcType="INTEGER" property="tgId" />
     <result column="group_name" jdbcType="VARCHAR" property="groupName" />
     <result column="parent_tg_id" jdbcType="VARCHAR" property="parentTgId" />
@@ -21,13 +21,13 @@
     delete from t_group
     where tg_id = #{tgId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TGroup">
+  <insert id="insert" parameterType="com.hong.entity.auth.TGroup">
     insert into t_group (tg_id, group_name, parent_tg_id, 
       gen_time, description)
     values (#{tgId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{parentTgId,jdbcType=VARCHAR}, 
       #{genTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TGroup">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TGroup">
     insert into t_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tgId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TGroup">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TGroup">
     update t_group
     <set>
       <if test="groupName != null">
@@ -82,7 +82,7 @@
     </set>
     where tg_id = #{tgId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TGroup">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TGroup">
     update t_group
     set group_name = #{groupName,jdbcType=VARCHAR},
       parent_tg_id = #{parentTgId,jdbcType=VARCHAR},

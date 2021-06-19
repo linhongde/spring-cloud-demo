@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TRoleMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TRole">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TRole">
     <id column="tr_id" jdbcType="INTEGER" property="trId" />
     <result column="parent_tr_id" jdbcType="INTEGER" property="parentTrId" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
@@ -21,13 +21,13 @@
     delete from t_role
     where tr_id = #{trId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TRole">
+  <insert id="insert" parameterType="com.hong.entity.auth.TRole">
     insert into t_role (tr_id, parent_tr_id, role_name, 
       greate_time, description)
     values (#{trId,jdbcType=INTEGER}, #{parentTrId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, 
       #{greateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TRole">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TRole">
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="trId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TRole">
     update t_role
     <set>
       <if test="parentTrId != null">
@@ -82,7 +82,7 @@
     </set>
     where tr_id = #{trId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TRole">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TRole">
     update t_role
     set parent_tr_id = #{parentTrId,jdbcType=INTEGER},
       role_name = #{roleName,jdbcType=VARCHAR},

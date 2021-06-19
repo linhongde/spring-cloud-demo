@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TGroupRoleRelationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TGroupRoleRelation">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TGroupRoleRelation">
     <id column="tgr_id" jdbcType="INTEGER" property="tgrId" />
     <result column="tg_id" jdbcType="INTEGER" property="tgId" />
     <result column="tr_id" jdbcType="VARCHAR" property="trId" />
@@ -19,13 +19,13 @@
     delete from t_group_role_relation
     where tgr_id = #{tgrId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TGroupRoleRelation">
+  <insert id="insert" parameterType="com.hong.entity.auth.TGroupRoleRelation">
     insert into t_group_role_relation (tgr_id, tg_id, tr_id
       )
     values (#{tgrId,jdbcType=INTEGER}, #{tgId,jdbcType=INTEGER}, #{trId,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TGroupRoleRelation">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TGroupRoleRelation">
     insert into t_group_role_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tgrId != null">
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TGroupRoleRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TGroupRoleRelation">
     update t_group_role_relation
     <set>
       <if test="tgId != null">
@@ -62,7 +62,7 @@
     </set>
     where tgr_id = #{tgrId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TGroupRoleRelation">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TGroupRoleRelation">
     update t_group_role_relation
     set tg_id = #{tgId,jdbcType=INTEGER},
       tr_id = #{trId,jdbcType=VARCHAR}

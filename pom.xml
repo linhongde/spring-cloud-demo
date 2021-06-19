@@ -31,6 +31,9 @@
         <module>server-zuul</module>
         <module>spring-cloud-admin</module>
         <module>admin-server</module>
+        <module>security-server</module>
+        <module>security-db</module>
+        <module>mybatis-generator</module>
     </modules>
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TOrganizationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TOrganization">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TOrganization">
     <id column="to_id" jdbcType="INTEGER" property="toId" />
     <result column="parent_to_id" jdbcType="INTEGER" property="parentToId" />
     <result column="org_name" jdbcType="VARCHAR" property="orgName" />
@@ -21,13 +21,13 @@
     delete from t_organization
     where to_id = #{toId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TOrganization">
+  <insert id="insert" parameterType="com.hong.entity.auth.TOrganization">
     insert into t_organization (to_id, parent_to_id, org_name, 
       gen_time, description)
     values (#{toId,jdbcType=INTEGER}, #{parentToId,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, 
       #{genTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TOrganization">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TOrganization">
     insert into t_organization
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="toId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TOrganization">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TOrganization">
     update t_organization
     <set>
       <if test="parentToId != null">
@@ -82,7 +82,7 @@
     </set>
     where to_id = #{toId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TOrganization">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TOrganization">
     update t_organization
     set parent_to_id = #{parentToId,jdbcType=INTEGER},
       org_name = #{orgName,jdbcType=VARCHAR},

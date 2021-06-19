@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TOrganization;
+import com.hong.entity.auth.TOrganization;
 
 public interface TOrganizationMapper {
     int deleteByPrimaryKey(Integer toId);

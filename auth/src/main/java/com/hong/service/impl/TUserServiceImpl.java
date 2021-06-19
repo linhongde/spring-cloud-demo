@@ -1,7 +1,7 @@
 package com.hong.service.impl;
 
-import com.hong.common.Result;
-import com.hong.entity.TUser;
+import com.hong.common.response.Result;
+import com.hong.entity.auth.TUser;
 import com.hong.mapper.TUserMapper;
 import com.hong.service.TUserService;
 import org.springframework.stereotype.Service;

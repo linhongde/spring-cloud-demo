@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TUserGroupRelationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TUserGroupRelation">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TUserGroupRelation">
     <id column="tug_id" jdbcType="INTEGER" property="tugId" />
     <result column="tu_id" jdbcType="INTEGER" property="tuId" />
     <result column="tg_id" jdbcType="INTEGER" property="tgId" />
@@ -19,13 +19,13 @@
     delete from t_user_group_relation
     where tug_id = #{tugId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TUserGroupRelation">
+  <insert id="insert" parameterType="com.hong.entity.auth.TUserGroupRelation">
     insert into t_user_group_relation (tug_id, tu_id, tg_id
       )
     values (#{tugId,jdbcType=INTEGER}, #{tuId,jdbcType=INTEGER}, #{tgId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TUserGroupRelation">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TUserGroupRelation">
     insert into t_user_group_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="tugId != null">
@@ -50,7 +50,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TUserGroupRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TUserGroupRelation">
     update t_user_group_relation
     <set>
       <if test="tuId != null">
@@ -62,7 +62,7 @@
     </set>
     where tug_id = #{tugId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TUserGroupRelation">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TUserGroupRelation">
     update t_user_group_relation
     set tu_id = #{tuId,jdbcType=INTEGER},
       tg_id = #{tgId,jdbcType=INTEGER}

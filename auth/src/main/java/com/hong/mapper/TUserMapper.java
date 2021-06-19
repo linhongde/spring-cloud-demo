@@ -1,6 +1,6 @@
 package com.hong.mapper;
 
-import com.hong.entity.TUser;
+import com.hong.entity.auth.TUser;
 
 
 public interface TUserMapper {

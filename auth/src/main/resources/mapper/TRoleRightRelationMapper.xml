@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hong.mapper.TRoleRightRelationMapper">
-  <resultMap id="BaseResultMap" type="com.hong.entity.TRoleRightRelation">
+  <resultMap id="BaseResultMap" type="com.hong.entity.auth.TRoleRightRelation">
     <id column="trr_id" jdbcType="INTEGER" property="trrId" />
     <result column="Role_id" jdbcType="INTEGER" property="roleId" />
     <result column="right_id" jdbcType="INTEGER" property="rightId" />
@@ -20,13 +20,13 @@
     delete from t_role_right_relation
     where trr_id = #{trrId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.hong.entity.TRoleRightRelation">
+  <insert id="insert" parameterType="com.hong.entity.auth.TRoleRightRelation">
     insert into t_role_right_relation (trr_id, Role_id, right_id, 
       right_type)
     values (#{trrId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{rightId,jdbcType=INTEGER}, 
       #{rightType,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hong.entity.TRoleRightRelation">
+  <insert id="insertSelective" parameterType="com.hong.entity.auth.TRoleRightRelation">
     insert into t_role_right_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="trrId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.TRoleRightRelation">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hong.entity.auth.TRoleRightRelation">
     update t_role_right_relation
     <set>
       <if test="roleId != null">
@@ -72,7 +72,7 @@
     </set>
     where trr_id = #{trrId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hong.entity.TRoleRightRelation">
+  <update id="updateByPrimaryKey" parameterType="com.hong.entity.auth.TRoleRightRelation">
     update t_role_right_relation
     set Role_id = #{roleId,jdbcType=INTEGER},
       right_id = #{rightId,jdbcType=INTEGER},
