@@ -1,4 +1,4 @@
-package config;
+package com.hong.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

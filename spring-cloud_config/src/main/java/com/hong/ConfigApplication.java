@@ -21,19 +21,12 @@ public class ConfigApplication {
     }
 
 
-<<<<<<< HEAD
    /* @Value("${spring.cloud.config.name}")
-=======
-    /*@Value("${spring.cloud.config.name}")*/
->>>>>>> e4abaa59b663f3f3a764bda91816453ef8bca3b3
     private String port;
 
     @GetMapping("/getPort")
-    public String getPort(){
+    public String getPort() {
         return port;
-<<<<<<< HEAD
+
     }*/
-=======
-    }
->>>>>>> e4abaa59b663f3f3a764bda91816453ef8bca3b3
 }

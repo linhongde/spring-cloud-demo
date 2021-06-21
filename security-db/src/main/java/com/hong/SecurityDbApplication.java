@@ -17,9 +17,7 @@ import javax.sql.DataSource;
 @MapperScan("com.hong.mapper")
 public class SecurityDbApplication {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(SecurityDbApplication.class);
-        DataSource bean = context.getBean(DataSource.class);
-        DataSource dataSource= (DataSource) context.getBean("dataSource");
+        SpringApplication.run(SecurityDbApplication.class);
         log.info("security-db启动成功。。。。。。");
     }
 }
