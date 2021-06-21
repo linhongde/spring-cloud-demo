@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TUserService {
 
     @PostMapping(value = "/addUser")
-    Result addUser(@RequestBody TUser user);
+    Boolean addUser(@RequestBody TUser user);
 
     @PostMapping(value = "/updateUser")
-    Result updateUser(@RequestBody TUser tuser);
+    Boolean updateUser(@RequestBody TUser tuser);
 
     @PostMapping(value = "/deleteUser")
-    Result deleteUser(@RequestBody TUser tUser);
+    Boolean deleteUser(@RequestBody TUser tUser);
 
     @PostMapping(value = "/selectUser")
     Result selectUser(@RequestBody TUser tUser);

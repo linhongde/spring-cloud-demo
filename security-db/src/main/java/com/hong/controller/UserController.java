@@ -22,31 +22,31 @@ public class UserController {
 
     @ApiOperation("保存用户信息")
     @PostMapping(value = "/saveUser")
-    public Result<Boolean> saveUser(@RequestBody AuthUser authUser){
-        return null;
+    public Result saveUser(@RequestBody AuthUser authUser){
+        return Result.ok(userService.saveUser(authUser));
     }
 
     @ApiOperation("根据用户ID删除用户信息")
     @GetMapping(value = "/deleteUser")
     public Result deleteUser(@PathParam("id")Long userId){
-        return Result.ok(true);
+        return Result.ok(userService.deleteUser(userId));
     }
 
     @ApiOperation("修改用户信息")
     @PostMapping(value = "/updateUser")
     public Result updateUser(@RequestBody AuthUser authUser){
-        return null;
+        return Result.ok(userService.updateUser(authUser));
     }
 
     @ApiOperation("根据用户ID获取用户信息")
     @GetMapping(value = "/getUserById")
     public Result getUserById(@PathParam(value = "id")Long userId){
-        return null;
+        return Result.ok(userService.getUserById(userId));
     }
 
     @ApiOperation("根据用户名称获取用户信息")
     @GetMapping(value = "/getUserByUserName")
-    public Result getUserByUserName(@PathParam(value = "name")String UserName){
-        return null;
+    public Result getUserByUserName(@PathParam(value = "name")String userName){
+        return Result.ok(userService.getUserByName(userName));
     }
 }

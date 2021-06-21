@@ -1,4 +1,4 @@
-package com.hong.config;
+package com.hong;
 
 import com.hong.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

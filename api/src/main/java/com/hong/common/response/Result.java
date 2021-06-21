@@ -1,10 +1,10 @@
 package com.hong.common.response;
 
-public class Result<T> {
+public class Result {
     /**
      * 响应数据
      */
-    private T data;
+    private Object data;
 
     /**
      * 响应信息
@@ -22,7 +22,7 @@ public class Result<T> {
     private String errorMessage;
 
 
-    public Result(T data, String message, int code, String errorMessage) {
+    public Result(Object data, String message, int code, String errorMessage) {
         this.data = data;
         this.message = message;
         this.code = code;

@@ -1,4 +1,4 @@
-package com.hong.config;
+package com.hong;
 
 import com.hong.controller.Hi;
 import org.springframework.boot.actuate.health.Health;

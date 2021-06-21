@@ -15,39 +15,30 @@ public class TUserServiceImpl implements TUserService {
     private TUserMapper mapper;
 
     @Override
-    public Result addUser(TUser tUser) {
+    public Boolean addUser(TUser tUser) {
         Integer result=mapper.insert(tUser);
-        if(result==1){
-            return Result.success(result);
-        }
-        return Result.fail("添加用户信息失败");
+        return result==1?true:false;
     }
 
     @Override
-    public Result updateUser(TUser tuser) {
+    public Boolean updateUser(TUser tuser) {
         Integer result=mapper.insertSelective(tuser);
-        if (result==1){
-            return Result.success(result);
-        }
-        return Result.fail("修改用户信息失败。");
+        return result==1?true:false;
     }
 
     @Override
-    public Result deleteUser(TUser tUser) {
+    public Boolean deleteUser(TUser tUser) {
         Integer result=mapper.deleteByPrimaryKey(tUser.getTuId());
-        if (result==1){
-            return Result.success(result);
-        }
-        return Result.fail("删除用户信息失败。");
+        return result==1?true:false;
     }
 
     @Override
     public Result selectUser(TUser tUser) {
-        return Result.success(mapper.selectByPrimaryKey(tUser.getTuId()));
+        return Result.ok(mapper.selectByPrimaryKey(tUser.getTuId()));
     }
 
     @Override
     public Result getUserById(Integer id) {
-        return Result.success(mapper.selectByPrimaryKey(id));
+        return Result.ok(mapper.selectByPrimaryKey(id));
     }
 }

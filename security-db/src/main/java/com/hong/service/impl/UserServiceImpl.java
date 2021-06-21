@@ -4,7 +4,6 @@ import com.hong.entity.AuthUser;
 import com.hong.entity.AuthUserDetails;
 import com.hong.mapper.AuthUserMapper;
 import com.hong.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -50,6 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return new AuthUserDetails(authUserMapper.selectByUserName(s));
+        AuthUser authUser = authUserMapper.selectByUserName(s);
+        return new AuthUserDetails(authUser);
     }
 }

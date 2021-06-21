@@ -35,6 +35,8 @@
         <module>security-server</module>
         <module>security-db</module>
         <module>mybatis-generator</module>
+        <module>auth-server</module>
+        <module>security-web</module>
     </modules>
 
 

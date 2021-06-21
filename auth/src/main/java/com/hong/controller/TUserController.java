@@ -1,7 +1,6 @@
 package com.hong.controller;
 
 import com.hong.common.response.Result;
-
 import com.hong.entity.auth.TUser;
 import com.hong.service.TUserService;
 import io.swagger.annotations.Api;
@@ -19,7 +18,7 @@ public class TUserController {
 
     @PostMapping("/addUser")
     @ApiOperation(value = "添加用户信息")
-    public Result addUser(@RequestBody TUser user){
+    public boolean addUser(@RequestBody TUser user){
         return userService.addUser(user);
     }
 
@@ -34,14 +33,14 @@ public class TUserController {
     @PostMapping("updateUser")
     @ApiOperation(value = "修改用户信息")
     public Result updateUser(@RequestBody TUser user){
-        return userService.updateUser(user);
+        return Result.ok(userService.updateUser(user));
     }
 
 
     @PostMapping("deleteUser")
     @ApiOperation(value = "删除用户信息")
     public Result deleteUser(@RequestBody TUser user){
-        return userService.deleteUser(user);
+        return Result.ok(userService.deleteUser(user));
     }
 
     @PostMapping("/getUser")
