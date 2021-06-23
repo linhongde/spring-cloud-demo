@@ -1,6 +1,8 @@
 package com.hong.entity;
 
-public class AuthUser {
+import java.io.Serializable;
+
+public class AuthUser implements Serializable {
     private Long id;
 
     private String password;

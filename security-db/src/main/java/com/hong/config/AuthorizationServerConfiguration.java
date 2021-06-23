@@ -1,4 +1,4 @@
-package com.hong;
+package com.hong.config;
 
 import com.alibaba.fastjson.JSON;
 import com.hong.service.UserService;

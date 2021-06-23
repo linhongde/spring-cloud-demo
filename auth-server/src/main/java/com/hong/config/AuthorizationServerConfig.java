@@ -1,97 +1,90 @@
 package com.hong.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+
+import javax.sql.DataSource;
 
 // 配置授权中心信息
 @Configuration
 @EnableAuthorizationServer // 开启认证授权中心
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-    // accessToken有效期
-    private int accessTokenValiditySeconds = 7200; // 两小时
 
-    // 添加商户信息
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // withClient appid
-        clients.inMemory().withClient("client_1").secret(passwordEncoder().encode("123456"))
-                .authorizedGrantTypes("password","client_credentials","refresh_token").scopes("all").accessTokenValiditySeconds(accessTokenValiditySeconds);
-        /*clients.inMemory().withClient("client_1").secret(passwordEncoder().encode("123456"))
-                .authorizedGrantTypes("password", "client_credentials", "refresh_token", "authorization_code")
-                .scopes("all").redirectUris("http://www.xxx.com")
-                .accessTokenValiditySeconds(accessTokenValiditySeconds)
-                .refreshTokenValiditySeconds(refreshTokenValiditySeconds);*/
+    @Autowired
+    @Qualifier("authenticationManagerBean")
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    @Qualifier("dataSource")
+    private DataSource dataSource;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+    // @Autowired
+    // private UserDetailsService userDetailsService;
+
+    @Bean
+    public TokenStore tokenStore() {
+        // return new InMemoryTokenStore(); //使用内存中的 token store
+        return new JdbcTokenStore(dataSource); /// 使用Jdbctoken store
     }
-
-
-
-    // 设置token类型
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.authenticationManager(authenticationManager()).allowedTokenEndpointRequestMethods(HttpMethod.GET,
-                HttpMethod.POST);
-        endpoints.authenticationManager(authenticationManager());
-        endpoints.userDetailsService(userDetailsService());
-    }
-
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
-        // 允许表单认证
-        oauthServer.allowFormAuthenticationForClients();
-        // 允许check_token访问
-        oauthServer.checkTokenAccess("permitAll()");
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+        // 添加授权用户
+        clients.jdbc(dataSource);
+//		.withClient("client_1").secret(new BCryptPasswordEncoder().encode("123456"))
+//		.authorizedGrantTypes("password", "refresh_token", "authorization_code")// 允许授权范围
+//		.redirectUris("http://www.xxx.com").authorities("ROLE_ADMIN", "ROLE_USER")// 客户端可以使用的权限
+//		.scopes("all").accessTokenValiditySeconds(7200).refreshTokenValiditySeconds(7200);
+}
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager)
+                .userDetailsService(userDetailsService());// 必须设置
+        // UserDetailsService
+        // 否则刷新token 时会报错
     }
 
-    @Bean
-    AuthenticationManager authenticationManager() {
-        AuthenticationManager authenticationManager = new AuthenticationManager() {
-
-            public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-                return daoAuhthenticationProvider().authenticate(authentication);
-            }
-        };
-        return authenticationManager;
-    }
-
-    @Bean
-    public AuthenticationProvider daoAuhthenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
-        daoAuthenticationProvider.setHideUserNotFoundExceptions(false);
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        return daoAuthenticationProvider;
-    }
-
-    // 设置添加用户信息,正常应该从数据库中读取
     @Bean
     UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
-        userDetailsService.createUser(User.withUsername("user_1").password(passwordEncoder().encode("123456"))
-                .authorities("ROLE_USER").build());
-        userDetailsService.createUser(User.withUsername("user_2").password(passwordEncoder().encode("1234567"))
-                .authorities("ROLE_USER").build());
-        return userDetailsService;
+        JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
+        manager.setJdbcTemplate(jdbcTemplate);
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(User.withUsername("user_1").password(new BCryptPasswordEncoder().encode("123456"))
+//                .authorities("ROLE_USER").build());
+//        manager.createUser(User.withUsername("user_2")
+//                .password(new BCryptPasswordEncoder().encode("1234567")).authorities("ROLE_USER").build());
+        return manager;
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        // 加密方式
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder;
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();// 允许表单登录
+
     }
+
+
+    public static void main(String[] args) {
+        System.out.println(new BCryptPasswordEncoder().encode("123456"));
+    }
+
 }
