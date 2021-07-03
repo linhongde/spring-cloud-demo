@@ -14,7 +14,7 @@ import org.springframework.context.ApplicationContext;
 @EnableCircuitBreaker
 @Slf4j
 public class AuthApplication {
-
+    //https://blog.csdn.net/j754379117/article/details/70176974
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(AuthApplication.class, args);
         log.info("用户鉴权中心启动成功。。。。");
